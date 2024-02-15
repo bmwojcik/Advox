@@ -12,7 +12,6 @@ use Magento\Sales\Model\Service\OrderService;
 class AddOrderToQueue
 {
     private PublisherInterface $publisher;
-
     private OrderCommentRequestInterfaceFactory $orderCommentRequestFactory;
 
     /**
@@ -32,7 +31,6 @@ class AddOrderToQueue
      * @param OrderService $subject
      * @param OrderInterface $result
      * @param OrderInterface $order
-     *
      * @return OrderInterface
      */
     public function afterPlace(OrderService $subject, OrderInterface $result, OrderInterface $order): OrderInterface
@@ -46,6 +44,9 @@ class AddOrderToQueue
                     ]
                 )
             );
+            
         }
+        
+        return $result;
     }
 }
