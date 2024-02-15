@@ -12,6 +12,7 @@ use Magento\Sales\Model\Service\OrderService;
 class AddOrderToQueue
 {
     private PublisherInterface $publisher;
+    
     private OrderCommentRequestInterfaceFactory $orderCommentRequestFactory;
 
     /**
@@ -44,7 +45,6 @@ class AddOrderToQueue
                     ]
                 )
             );
-            
         }
         
         return $result;
