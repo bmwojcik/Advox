@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
+    <topic name="advox.order.addComment" is_synchronous="false" request="Advox\Order\Api\Queue\OrderCommentRequestInterface">
+        <handler name="advox.order.addComment.handler" type="Advox\Order\Model\Queue\MessageProcessor" method="addOrderComment" />
+    </topic>
+</config>

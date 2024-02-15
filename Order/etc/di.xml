@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Advox\Order\Api\Queue\OrderCommentRequestInterface" type="Advox\Order\Model\Queue\Request\OrderComment"/>
+
+    <type name="Advox\Order\Model\Queue\MessageProcessor">
+        <arguments>
+            <argument name="logger" xsi:type="object">Advox\Order\Model\Queue\MessageProcessorLogger</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Advox\Order\Model\Queue\MessageProcessorHandler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/advox/queue.log</argument>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Advox\Order\Model\Queue\MessageProcessorLogger" type="Monolog\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">Advox Queue Logger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Advox\Order\Model\Queue\MessageProcessorHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Sales\Model\Service\OrderService">
+        <plugin name="Advox\Order\Plugin\AddOrderToQueue" type="Advox\Order\Plugin\AddOrderToQueue"/>
+    </type>
+</config>

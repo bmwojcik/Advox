@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="advox_modules" translate="label" class="advox-tab" sortOrder="100">
+            <label>Advox</label>
+        </tab>
+        <section id="advox_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <tab>advox_modules</tab>
+            <resource>Advox_Order::config</resource>
+            <label>Order</label>
+            <group id="comment" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Comment</label>
+                <field id="message" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Message</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
